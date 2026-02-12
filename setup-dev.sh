@@ -1,9 +1,9 @@
 #!/bin/bash
-# Development setup script for chromium-cli
+# Development setup script for chromium-profile-cli
 
 set -e
 
-echo "🔧 Setting up chromium-cli development environment..."
+echo "🔧 Setting up chromium-profile-cli development environment..."
 
 # Check for leveldb
 if ! brew list leveldb &>/dev/null; then
@@ -38,13 +38,13 @@ export CPATH="${LEVELDB_PREFIX}/include"
 
 python -m pip install --no-cache-dir --no-binary :all: plyvel
 
-# Then install chromium-cli
-echo "📦 Installing chromium-cli..."
+# Then install chromium-profile-cli
+echo "📦 Installing chromium-profile-cli..."
 uv pip install -e .
 
 echo ""
 echo "✅ Setup complete!"
 echo ""
-echo "To use chromium-cli:"
+echo "To use chromium-profile-cli:"
 echo "  source .venv/bin/activate"
-echo "  chromium-cli --help"
+echo "  chromium-profile-cli --help"

@@ -1,4 +1,4 @@
-# chromium-cli
+# chromium-profile-cli
 
 Command-line tool for accessing Chromium browser data (tabs, history, bookmarks).
 
@@ -8,33 +8,18 @@ Works with **Brave**, **Chrome**, and **Chromium**.
 
 ```bash
 # Using uvx (recommended)
-uvx chromium-cli
+uvx chromium-profile-cli
 
 # Or install with pip
-pip install chromium-cli
-```
-
-### System Requirements
-
-Requires the LevelDB library (inherited from chromium-sync-mcp):
-
-```bash
-# macOS
-brew install leveldb
-
-# Ubuntu/Debian
-sudo apt-get install libleveldb-dev
-
-# Fedora
-sudo dnf install leveldb-devel
+pip install chromium-profile-cli
 ```
 
 ## First Run
 
-On first run, chromium-cli will automatically detect installed browsers and prompt you to select one:
+On first run, chromium-profile-cli will automatically detect installed browsers and prompt you to select one:
 
 ```bash
-$ chromium-cli status
+$ chromium-profile-cli status
 
 🔍 Multiple browser profiles detected:
 
@@ -53,70 +38,70 @@ Select a browser [1]: 1
 
 ```bash
 # Show current configuration
-chromium-cli config show
+chromium-profile-cli config show
 
 # Interactively select a browser
-chromium-cli config set
+chromium-profile-cli config set
 
 # Manually set profile path
-chromium-cli config set-path /path/to/profile
+chromium-profile-cli config set-path /path/to/profile
 ```
 
 ### Tabs
 
 ```bash
 # Show local browser tabs
-chromium-cli tabs local
+chromium-profile-cli tabs local
 
 # Show tabs from all synced devices
-chromium-cli tabs synced
+chromium-profile-cli tabs synced
 
 # JSON output
-chromium-cli tabs local --json
+chromium-profile-cli tabs local --json
 ```
 
 ### History
 
 ```bash
 # Search by text (substring match)
-chromium-cli history -q github
+chromium-profile-cli history -q github
 
 # Search by regex pattern
-chromium-cli history -p "docs\\.python\\.org"
+chromium-profile-cli history -p "docs\\.python\\.org"
 
 # Limit results
-chromium-cli history -q python -l 50
+chromium-profile-cli history -q python -l 50
 
 # Filter by date
-chromium-cli history --days 7
-chromium-cli history --after 2026-01-01
-chromium-cli history --before 2026-02-01
+chromium-profile-cli history --days 7
+chromium-profile-cli history --after 2026-01-01
+chromium-profile-cli history --before 2026-02-01
 
 # JSON output
-chromium-cli history -q python --json
+chromium-profile-cli history -q python --json
 ```
 
 ### Bookmarks
 
 ```bash
 # List all bookmarks
-chromium-cli bookmarks list
+chromium-profile-cli bookmarks list
 
 # Search bookmarks
-chromium-cli bookmarks search python
+chromium-profile-cli bookmarks search python
 
 # Filter by folder ID
-chromium-cli bookmarks list --folder 123
+chromium-profile-cli bookmarks list --folder 123
 
 # JSON output
-chromium-cli bookmarks search python --json
+chromium-profile-cli bookmarks search python --json
 ```
 
 ### Status
 
 ```bash
 # Check what data is accessible
-chromium-cli status
+chromium-profile-cli status
 ```
 
 ## Environment Variables
@@ -125,12 +110,12 @@ Set `CHROMIUM_PROFILE_PATH` to override auto-detection:
 
 ```bash
 export CHROMIUM_PROFILE_PATH=~/.config/google-chrome/Default
-chromium-cli status
+chromium-profile-cli status
 ```
 
 ## How It Works
 
-This tool uses the [chromium-sync-mcp](https://github.com/jaidhyani/chromium-sync-mcp) library to read directly from your browser's local profile files:
+Reads directly from your browser's local profile files:
 
 - **History**: SQLite database
 - **Bookmarks**: JSON file

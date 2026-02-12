@@ -7,9 +7,9 @@ A command-line tool for interacting with Chromium browser data (tabs, history, b
 ### Project Structure
 
 ```
-chromium-cli/
+chromium-profile-cli/
 ├── src/
-│   └── chromium_cli/
+│   └── chromium_profile_cli/
 │       ├── __init__.py
 │       └── main.py          # CLI implementation
 ├── pyproject.toml
@@ -24,24 +24,24 @@ chromium-cli/
 
 The CLI provides the following commands:
 
-- `chromium-cli config` - Manage browser profile configuration
+- `chromium-profile-cli config` - Manage browser profile configuration
   - `config show` - Show current configuration
   - `config set` - Interactively select browser
   - `config set-path <path>` - Set profile path directly
 
-- `chromium-cli tabs` - View browser tabs
+- `chromium-profile-cli tabs` - View browser tabs
   - `tabs local` - Local browser session tabs
   - `tabs synced` - Tabs from all synced devices
 
-- `chromium-cli history` - Search browsing history
+- `chromium-profile-cli history` - Search browsing history
   - Supports text search, regex patterns, date filtering
   - JSON output option
 
-- `chromium-cli bookmarks` - View and search bookmarks
+- `chromium-profile-cli bookmarks` - View and search bookmarks
   - `bookmarks list` - List all bookmarks
   - `bookmarks search <query>` - Search by title/URL
 
-- `chromium-cli status` - Check what data is accessible
+- `chromium-profile-cli status` - Check what data is accessible
 
 ### First-Run Experience
 
@@ -91,6 +91,6 @@ ImportError: dlopen(.../_plyvel.cpython-313-darwin.so, 0x0002):
 - ~~src/chromium_sync/cli.py~~ (removed - moved to separate project)
 - pyproject.toml (reverted - removed click dependency and cli entry point)
 
-### In chromium-cli/main
-- All files in `/Users/jaidhyani/projects/chromium-cli/main/`
+### In chromium-profile-cli/main
+- All files in `/Users/jaidhyani/projects/chromium-profile-cli/main/`
 - Git repository initialized but not yet committed

@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 import click
-from chromium_sync.local import (
+from chromium_profile_cli.local import (
     CONFIG_FILE,
     LocalReader,
     MultipleProfilesFound,
@@ -51,12 +51,12 @@ def get_reader() -> LocalReader:
     except ValueError as e:
         click.echo(f"❌ Error: {e}", err=True)
         click.echo("\nSet CHROMIUM_PROFILE_PATH to your browser profile directory,", err=True)
-        click.echo("or run 'chromium-cli config set'", err=True)
+        click.echo("or run 'chromium-profile-cli config set'", err=True)
         sys.exit(1)
 
 
 @click.group()
-@click.version_option(version="0.1.0")
+@click.version_option(version="0.2.0")
 def cli():
     """CLI tool for accessing Chromium browser data.
 
@@ -214,13 +214,13 @@ def history(
 
     Examples:
 
-      chromium-cli history -q github
+      chromium-profile-cli history -q github
 
-      chromium-cli history -p "docs\\.python\\.org"
+      chromium-profile-cli history -p "docs\\.python\\.org"
 
-      chromium-cli history --days 7 -l 50
+      chromium-profile-cli history --days 7 -l 50
 
-      chromium-cli history --after 2026-01-01
+      chromium-profile-cli history --after 2026-01-01
     """
     reader = get_reader()
     try:
